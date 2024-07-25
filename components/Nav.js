@@ -1,34 +1,24 @@
 import { signOut, auth, signIn} from "@/auth"
 import Link from "next/link";
 import {Button, User} from "@nextui-org/react";
-import {Navbar,   NavbarBrand,   NavbarContent,   NavbarItem,   NavbarMenuToggle,  NavbarMenu,  NavbarMenuItem} from "@nextui-org/navbar";
-
+import {Navbar,   NavbarBrand,   NavbarContent,   NavbarItem} from "@nextui-org/navbar";
 
 export default async function Nav() {
     const session = await auth()
+
     return (        
       <Navbar className="w-[100vw]">
       <NavbarBrand>
-        <p className="font-bold text-inherit">Thrifty</p>
+        <Link href={'/'}>
+          <p className="font-bold text-[1.5rem] text-inherit">Thrifty</p>
+        </Link>
       </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="/" aria-current="page">
-            Home
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Integrations
-          </Link>
-        </NavbarItem>
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">        
       </NavbarContent>
       <NavbarContent justify="end">
+      <NavbarItem>
+          <Link href={'/shop'}>Shop</Link>
+        </NavbarItem>
           {session ? 
         <NavbarItem className="flex gap-3">
         <User   
@@ -37,14 +27,14 @@ export default async function Nav() {
         src: session.user.image,
       }}
       />
-      <form
+      {/* <form
       action={async () => {
         "use server"
         await signOut()
       }}
     >
       <Button color="danger" type="submit">Sign Out</Button>
-    </form>
+    </form> */}
           </NavbarItem>
           :
           <NavbarItem>
@@ -57,7 +47,7 @@ export default async function Nav() {
           <Button color="primary" type="submit">Sign with Google</Button>
         </form>
           </NavbarItem>
-        }
+        }        
         </NavbarContent>
     </Navbar>
     )
