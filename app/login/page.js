@@ -1,30 +1,16 @@
-import { signIn, signOut, auth } from "@/auth"
- 
+import { auth } from "@/auth"
+import {redirect} from 'next/navigation'
+import Items from '@/components/items';
+
+
 export default async function SignIn() {
     const session = await auth()
 
-    if (session) return (
-        <div>
-            <h1>Welcome {session.user.name}</h1>
-            <form
-            action={async () => {
-                "use server"
-                await signOut()
-            }}
-            >
-      <button type="submit">Sign Out</button>
-    </form>
-        </div>
-    )
+    if (session) return redirect("/")
 
   return (
-    <form
-      action={async () => {
-        "use server"
-        await signIn("google")
-      }}
-    >
-      <button type="submit">Signin with Google</button>
-    </form>
+    <div className='flex items-center justify-center'>       
+      <Items />
+    </div>
   )
 } 

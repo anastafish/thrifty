@@ -10,11 +10,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.13.0",
-    "@emotion/styled": "^11.13.0",
-    "@mui/material": "^5.16.4",
+    "@nextui-org/react": "^2.4.6",
     "@supabase/supabase-js": "^2.44.4",
-    "mongoose": "^8.5.1",
+    "framer-motion": "^11.3.17",
     "next": "14.2.5",
     "next-auth": "^5.0.0-beta.19",
     "react": "^18",

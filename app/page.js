@@ -1,17 +1,15 @@
-import supabase from "./lib/connectDB";
+import { redirect } from 'next/navigation'
+import { auth } from "@/auth";
+import Items from '@/components/items';
 
+export default async function Home() {
 
-export default function Home() {
-
-  const getUser = async() => {
-    const { data: { user } } = await supabase.auth.getUser()
-    console.log(user)
-  } 
-
-  getUser()
+  const session = await auth()
+  if (!session) return redirect("/login")    
 
   return (
-    <div>
+    <div className='flex items-center justify-center'>       
+      <Items />
     </div>
      );
 }

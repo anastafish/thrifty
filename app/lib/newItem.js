@@ -8,7 +8,6 @@ const newItem = async(item) => {
         {type:item.type, name:item.name, price:item.price},
       ])
       .select()
-      console.log(data)
     }  
     catch (error){
       console.log(error)
