@@ -4,7 +4,7 @@ import {Providers} from "./providers";
 
 export const metadata = {
   title: "Thrifty",
-  description: "Thrifty the first site for thrifty people",
+  description: "Thrifty - Your Closet's Second Life",
 };
 
 export default function RootLayout({ children }) {

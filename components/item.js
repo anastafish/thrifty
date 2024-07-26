@@ -12,11 +12,11 @@ export default function Item({item}) {
                 className="border-none"
                 >
                 <Image
-                    alt="Woman listing to music"
+                    alt="item_image"
                     className="object-cover"
                     height={200}
-                    src={item.image_url}
                     width={200}
+                    src={item.image_url}
                 />
                 <CardFooter className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
                     <p className="text-base text-center text-black/80">{item.title}</p>
