@@ -2,12 +2,11 @@ import { signOut, auth, signIn} from "@/auth"
 import Link from "next/link";
 import {Button, User} from "@nextui-org/react";
 import {Navbar,   NavbarBrand,   NavbarContent,   NavbarItem} from "@nextui-org/navbar";
-import DropDown from "@/components/DropDown";
-
+import DropDown from "@/components/DropDown"
 
 export default async function Nav() {
     const session = await auth()
-
+    
     return (        
       <Navbar className="">
       <NavbarBrand>

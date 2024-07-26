@@ -5,10 +5,15 @@ import newItem from "@/app/lib/newItem"
 import {Input} from "@nextui-org/input";
 import {Button} from "@nextui-org/button";
 import { Select, SelectItem } from "@nextui-org/react";
+import {useRouter} from "next/navigation";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ItemForm({session}) {
 
   const sizes = ["XS", "S", "M", "L", "XL", "XXL"]
+  const router = useRouter()
+  const notify = () => toast.error("Fill all the fields");
 
     const [item, setItem] = useState({
         title:"",
@@ -26,12 +31,11 @@ export default function ItemForm({session}) {
           ...item,
           [e.target.name]: e.target.value,
         })
-        console.log(item)
-        console.log(session)
       }
       
       return (
         <form className="flex flex-col items-center justify-center gap-5">
+          <ToastContainer />
           <Input 
             type="text"
             name="title"
@@ -99,7 +103,12 @@ export default function ItemForm({session}) {
         color="success"
         onClick={(e) => {
           e.preventDefault()
+          if(!item.title || !item.brand || !item.size || !item.color || !item.condition || !item.price || !item.description) {
+            notify()
+            return
+          }
           newItem(item)  
+          router.push('/shop')
         }}
       >
         List Now

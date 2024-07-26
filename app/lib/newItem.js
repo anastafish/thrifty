@@ -18,8 +18,7 @@ const newItem = async(item) => {
       },
     ])
     .select()
-      console.log(data)
-    }  
+  }  
     catch (error){
       console.log(error)
     }
