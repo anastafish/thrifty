@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function ItemForm({session}) {
 
   const sizes = ["XS", "S", "M", "L", "XL", "XXL"]
+  const conditions = ["New with tags", "New without tags", "Like new", "Gently used", "noticable wear"]
   const router = useRouter()
   const notify = () => toast.error("Fill all the fields");
 
@@ -32,6 +33,7 @@ export default function ItemForm({session}) {
           [e.target.name]: e.target.value,
         })
       }
+  
       
       return (
         <form className="flex flex-col items-center justify-center gap-5">
@@ -72,13 +74,21 @@ export default function ItemForm({session}) {
             value={item.color}
             onChange={handleChange}
           />
-          <Input 
-            type="text"
-            name="condition"
-            placeholder="Condition"
-            value={item.condition}
-            onChange={handleChange}
-          />
+          <Select
+           name="condition"
+          label="Condition"
+          variant="bordered"
+          placeholder="Select the Condition"
+          selectedKeys={[item.condition]}
+          className="max-w-xs"
+          onChange={handleChange}
+      >
+        {conditions.map((condition) => (
+          <SelectItem key={condition}>
+            {condition}
+          </SelectItem>
+        ))}
+      </Select>
           <Input
           type="number"
           name="price"
@@ -107,7 +117,7 @@ export default function ItemForm({session}) {
             notify()
             return
           }
-          newItem(item)  
+          newItem(item)
           router.push('/shop')
         }}
       >
