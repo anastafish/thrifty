@@ -1,4 +1,5 @@
 import supabase from "./connectDB"
+import { v4 } from "uuid";
 
 const newItem = async(item) => {  
     try {
@@ -6,6 +7,7 @@ const newItem = async(item) => {
     .from('items')
     .insert([
       { 
+        id:v4(),    
         title:item.title,
         brand:item.brand,
         size:item.size,
@@ -18,6 +20,7 @@ const newItem = async(item) => {
       },
     ])
     .select()
+    return data
   }  
     catch (error){
       console.log(error)

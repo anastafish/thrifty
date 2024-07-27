@@ -19,7 +19,7 @@ export default function SingleItem({id}) {
 )
     return (
         <div id={item.id} className="flex flex-col items-center justify-center p-5">
-                <Image alt="itme_img" src={item.image_url} width={200} height={200} />
+                <Image alt="itme_img" src={`https://kujxhgudslinapnnligd.supabase.co/storage/v1/object/public/items/images/${item.id}.jpg`} width={200} height={200} />
                 <h1 className="text-[2rem]">{item.title}</h1>
                 <p className="text-[2rem]">{item.size}</p>
                 <h1 className="text-[2rem]">{item.color}</h1>

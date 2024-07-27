@@ -2,12 +2,14 @@
 
 import { useState } from "react"
 import newItem from "@/app/lib/newItem"
+import getSingleItem from "@/app/lib/getSingleItem";
 import {Input} from "@nextui-org/input";
 import {Button} from "@nextui-org/button";
 import { Select, SelectItem } from "@nextui-org/react";
 import {useRouter} from "next/navigation";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import uploadFile from "@/app/lib/uploadFile";
 
 export default function ItemForm({session}) {
 
@@ -32,6 +34,12 @@ export default function ItemForm({session}) {
           ...item,
           [e.target.name]: e.target.value,
         })
+      }
+
+      const [file, setFile] = useState(null)
+
+      const handleFileChange = (e) => {
+        setFile(e.target.files[0])
       }
   
       
@@ -108,16 +116,21 @@ export default function ItemForm({session}) {
             value={item.description}
             onChange={handleChange}
           />
+          <Input onChange={handleFileChange} type="file" accept="image/*"/>
       <Button
         type="submit"
         color="success"
         onClick={(e) => {
           e.preventDefault()
-          if(!item.title || !item.brand || !item.size || !item.color || !item.condition || !item.price || !item.description) {
+          if(!item.title || !item.brand || !item.size || !item.color || !item.condition || !item.price || !item.description || !file) {
             notify()
             return
           }
-          newItem(item)
+          newItem(item).then(
+            (data) => {
+              uploadFile(file, data[0].id)
+            }          
+          )
           router.push('/shop')
         }}
       >
