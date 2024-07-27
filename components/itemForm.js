@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import newItem from "@/app/lib/newItem"
-import getSingleItem from "@/app/lib/getSingleItem";
 import {Input} from "@nextui-org/input";
 import {Button} from "@nextui-org/button";
 import { Select, SelectItem } from "@nextui-org/react";
@@ -126,7 +125,7 @@ export default function ItemForm({session}) {
             notify()
             return
           }
-          newItem(item).then(
+          newItem(item, session.user.email).then(
             (data) => {
               uploadFile(file, data[0].id)
             }          

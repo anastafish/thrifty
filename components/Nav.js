@@ -1,4 +1,5 @@
-import { signOut, auth, signIn} from "@/auth"
+import {auth} from "@/auth"
+import SignIn from "./signIn";
 import Link from "next/link";
 import {Button, User} from "@nextui-org/react";
 import {Navbar,   NavbarBrand,   NavbarContent,   NavbarItem} from "@nextui-org/navbar";
@@ -6,7 +7,7 @@ import DropDown from "@/components/DropDown"
 
 export default async function Nav() {
     const session = await auth()
-    
+
     return (        
       <Navbar className="">
       <NavbarBrand>
@@ -20,9 +21,9 @@ export default async function Nav() {
       <NavbarItem>
           <Link href={'/shop'}>Shop</Link>
         </NavbarItem>
-        <NavbarItem>
+        {session && <NavbarItem>
           <Link href={'/list'}>New List</Link>
-        </NavbarItem>
+        </NavbarItem>}
           {session ? 
         <NavbarItem className="flex gap-3">
       <DropDown>
@@ -36,14 +37,7 @@ export default async function Nav() {
           </NavbarItem>
           :
           <NavbarItem>
-          <form
-          action={async () => {
-            "use server"
-            await signIn("google")
-          }}
-        >
-          <Button color="primary" type="submit">Sign with Google</Button>
-        </form>
+            <SignIn />
           </NavbarItem>
         }        
         </NavbarContent>

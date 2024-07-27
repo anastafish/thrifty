@@ -1,9 +1,15 @@
 import supabase from "./connectDB"
 import { v4 } from "uuid";
 
-const newItem = async(item) => {  
+const newItem = async(item, email) => {  
     try {
-    const { data, error } = await supabase
+      const user = await supabase
+          .from('users')
+          .select('id')
+          .eq('email', email)
+          .single();
+
+     const { data, error } = await supabase
     .from('items')
     .insert([
       { 
@@ -15,7 +21,7 @@ const newItem = async(item) => {
         condition:item.condition,
         price:item.price,
         description:item.description,
-        seller_id:item.seller_id,
+        seller_id:user.data.id,
         image_url:item.image_url, 
       },
     ])
