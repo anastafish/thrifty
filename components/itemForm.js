@@ -127,6 +127,7 @@ export default function ItemForm({session}) {
           }
           newItem(item, session.user.email).then(
             (data) => {
+              console.log(data)
               uploadFile(file, data[0].id)
             }          
           )

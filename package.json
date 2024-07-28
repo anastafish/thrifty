@@ -17,6 +17,7 @@
     "next-auth": "^5.0.0-beta.19",
     "react": "^18",
     "react-dom": "^18",
+    "react-floating-whatsapp": "^5.0.8",
     "react-toastify": "^10.0.5",
     "uuid": "^10.0.0"
   },

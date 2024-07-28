@@ -5,7 +5,7 @@ const newItem = async(item, email) => {
     try {
       const user = await supabase
           .from('users')
-          .select('id')
+          .select('id, phone')
           .eq('email', email)
           .single();
 
@@ -22,7 +22,8 @@ const newItem = async(item, email) => {
         price:item.price,
         description:item.description,
         seller_id:user.data.id,
-        image_url:item.image_url, 
+        seller_number:user.data.phone,
+        image_url:item.image_url,
       },
     ])
     .select()

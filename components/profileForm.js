@@ -14,12 +14,13 @@ const ProfileForm = ({session}) => {
     const [phone, setPhone] = useState('');
 
     const handleChange = (e) => {
+        if (e.target.value.length > 9) return
         setPhone(e.target.value);
     }
 
     useEffect(()=> {
         getUser(session.user.email).then(data => {
-            setPhone(data.phone)
+            setPhone(data.phone.substring(3))
         })
     },[])
 
@@ -29,11 +30,12 @@ const ProfileForm = ({session}) => {
             <Image src={session.user.image} alt="profile image" width={200} height={200} />
             <Input isDisabled value={session.user.name}/>
             <Input isDisabled value={session.user.email}/>
-            <Input placeholder='05********' type="phone" onChange={handleChange} value={phone}/>
+            <Input placeholder='5********' type="number" maxLength="9" onChange={handleChange} value={phone}/>
             <Button 
                 onClick={() => {
-                    if (!phone || phone === '') return
-                    updatePhone(session.user.email, phone)
+                    console.log(phone.length)
+                    if (!phone || phone.length !== 9) return
+                    updatePhone(session.user.email, '966'+phone)
                     notify()    
                     }}>
                     Update
