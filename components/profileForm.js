@@ -20,6 +20,9 @@ const ProfileForm = ({session}) => {
 
     useEffect(()=> {
         getUser(session.user.email).then(data => {
+            if (!data.phone) {
+                toast.error('Update phone number before listing a new item!')
+            }
             setPhone(data.phone.substring(3))
         })
     },[])
@@ -27,7 +30,7 @@ const ProfileForm = ({session}) => {
     return (
         <div className='flex flex-col items-center justify-center gap-5'>
             <ToastContainer />
-            <Image src={session.user.image} alt="profile image" width={200} height={200} />
+            <Image className="rounded-medium" src={session.user.image} alt="profile image" width={150} height={150} />
             <Input isDisabled value={session.user.name}/>
             <Input isDisabled value={session.user.email}/>
             <Input 
@@ -41,8 +44,10 @@ const ProfileForm = ({session}) => {
                 />
             <Button 
                 onClick={() => {
-                    console.log(phone.length)
-                    if (!phone || phone.length !== 9) return
+                    if (!phone || phone.length !== 9 || phone[0] !== '5') {
+                        toast.error('Invalid phone number!')
+                        return
+                    }
                     updatePhone(session.user.email, '966'+phone)
                     notify()    
                     }}>

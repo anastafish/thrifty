@@ -4,6 +4,10 @@ import supabase from "./app/lib/connectDB"
  
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [Google],
+  redirect: {
+    callback: '/profile',
+    home: '/profile',
+  },
   callbacks: {
     async signIn({ user, account, profile }) {
       if (account.provider === "google") {

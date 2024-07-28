@@ -14,12 +14,12 @@ const Hero = ({ session }) => {
         <main className="container mx-auto px-4 py-8 flex flex-col gap-5">
             <ToastContainer />
   <section id="hero" className="text-center py-12 bg-green-100 rounded-lg mb-8">
-    <h2 className="text-4xl font-bold text-green-800 mb-4">Your Closet's Second Life</h2>
+    <h2 className="text-4xl font-bold text-green-800 mb-4">The First Thrift online Store in Saudi Arabia!</h2>
     <p className="text-xl text-green-600 mb-6">Buy and sell pre-loved fashion with ease.</p>
     <div className="space-x-4 flex items-center justify-center gap-4">
       <Link href={'/shop'}>
         <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
-          Start Shopping
+          Start Thrifting
         </button>      
       </Link>
       {session ? <Link href={'/list'}>
@@ -41,7 +41,7 @@ const Hero = ({ session }) => {
     <div className="grid md:grid-cols-3 gap-6">
       <div className="bg-white p-6 rounded-lg shadow">
         <h3 className="text-xl font-semibold mb-2 text-center">Create an Account</h3>
-        <p className="text-center">Visit the Thrifty website and sign up using your Google account.</p>
+        <p className="text-center">Sign up using your Google account.</p>
       </div>
       <div className="bg-white p-6 rounded-lg shadow">
         <h3 className="text-xl font-semibold mb-2 text-center">List Your Clothes</h3>

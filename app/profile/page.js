@@ -1,6 +1,8 @@
 import ProfileForm from "@/components/profileForm";
 import {auth} from '@/auth'
 import { redirect } from "next/navigation";
+import getUser from "../lib/getUser";
+import { user } from "@nextui-org/react";
 
 const Profile = async() => {   
     const session = await auth()
