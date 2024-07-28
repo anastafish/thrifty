@@ -36,7 +36,7 @@ const ProfileForm = ({session}) => {
                 maxLength="9" 
                 onChange={handleChange} 
                 value={phone}
-                inputmode="numeric" 
+                inputMode="numeric" 
                 pattern="[0-9]*"
                 />
             <Button 

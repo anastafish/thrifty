@@ -48,14 +48,16 @@ export default function ItemForm({session}) {
           <Input 
             type="text"
             name="title"
-            placeholder="Title"
+            label="Title"
+            placeholder="Vintage Rock Band Tour T-Shirt"
             value={item.title}
             onChange={handleChange}
           />
           <Input 
             type="text"
             name="brand"
-            placeholder="Brand"
+            label="Brand"
+            placeholder="H&M"
             value={item.brand}
             onChange={handleChange}
           />
@@ -77,7 +79,8 @@ export default function ItemForm({session}) {
           <Input 
             type="text"
             name="color"
-            placeholder="Color"
+            label="Color"
+            placeholder="Black"
             value={item.color}
             onChange={handleChange}
           />
@@ -102,6 +105,11 @@ export default function ItemForm({session}) {
           value={item.price}
           onChange={handleChange}
           placeholder="0.00"
+          max={999}
+          maxLength={3}
+          min={1}
+          inputMode="numeric"
+          label="Price"
           startContent={
             <div className="pointer-events-none flex items-center">
               <span className="text-default-400 text-small">$</span>
@@ -111,11 +119,17 @@ export default function ItemForm({session}) {
           <Input 
             type="text"
             name="description"
-            placeholder="Description"
+            placeholder="Authentic 1985 world tour t-shirt. No holes or stains."
             value={item.description}
             onChange={handleChange}
+            label="Description"
           />
-          <Input onChange={handleFileChange} type="file" accept="image/*"/>
+          <Input 
+            onChange={handleFileChange} 
+            type="file" 
+            accept="image/*" 
+            label="Upload your item picture"
+            />
       <Button
         type="submit"
         color="success"
