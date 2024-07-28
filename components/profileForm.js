@@ -30,7 +30,15 @@ const ProfileForm = ({session}) => {
             <Image src={session.user.image} alt="profile image" width={200} height={200} />
             <Input isDisabled value={session.user.name}/>
             <Input isDisabled value={session.user.email}/>
-            <Input placeholder='5********' type="number" maxLength="9" onChange={handleChange} value={phone}/>
+            <Input 
+                placeholder='5********' 
+                type="number"
+                maxLength="9" 
+                onChange={handleChange} 
+                value={phone}
+                inputmode="numeric" 
+                pattern="[0-9]*"
+                />
             <Button 
                 onClick={() => {
                     console.log(phone.length)
