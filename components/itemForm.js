@@ -43,7 +43,7 @@ export default function ItemForm({session}) {
   
       
       return (
-        <form className="flex flex-col items-center justify-center gap-5">
+        <form className="flex flex-col items-center justify-center gap-5 m-3 p-3">
           <ToastContainer />
           <Input 
             type="text"
@@ -53,6 +53,7 @@ export default function ItemForm({session}) {
             value={item.title}
             onChange={handleChange}
           />
+          <div className="flex flex-col sm:flex-row gap-5 w-full">
           <Input 
             type="text"
             name="brand"
@@ -61,9 +62,21 @@ export default function ItemForm({session}) {
             value={item.brand}
             onChange={handleChange}
           />
+          <Input 
+            type="text"
+            name="color"
+            label="Color"
+            placeholder="Black"
+            value={item.color}
+            onChange={handleChange}
+          />
+          </div>        
+          <div className="flex flex-col sm:flex-row gap-5 w-full">
+
            <Select
            name="size"
           label="Size"
+          fullWidth
           variant="bordered"
           placeholder="Select the Size"
           selectedKeys={[item.size]}
@@ -76,15 +89,8 @@ export default function ItemForm({session}) {
           </SelectItem>
         ))}
       </Select>
-          <Input 
-            type="text"
-            name="color"
-            label="Color"
-            placeholder="Black"
-            value={item.color}
-            onChange={handleChange}
-          />
           <Select
+          fullWidth
            name="condition"
           label="Condition"
           variant="bordered"
@@ -99,6 +105,8 @@ export default function ItemForm({session}) {
           </SelectItem>
         ))}
       </Select>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-5 w-full">
           <Input
           type="number"
           name="price"
@@ -116,6 +124,13 @@ export default function ItemForm({session}) {
             </div>
           }
         />
+            <Input 
+              onChange={handleFileChange} 
+              type="file" 
+              accept="image/*" 
+              label="Upload your item picture"
+              />
+            </div>
           <Input 
             type="text"
             name="description"
@@ -124,12 +139,6 @@ export default function ItemForm({session}) {
             onChange={handleChange}
             label="Description"
           />
-          <Input 
-            onChange={handleFileChange} 
-            type="file" 
-            accept="image/*" 
-            label="Upload your item picture"
-            />
       <Button
         type="submit"
         color="success"
