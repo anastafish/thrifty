@@ -31,9 +31,10 @@ const ProfileForm = ({session}) => {
         <div className='flex flex-col items-center justify-center gap-5'>
             <ToastContainer />
             <Image className="rounded-medium" src={session.user.image} alt="profile image" width={150} height={150} />
-            <Input isDisabled value={session.user.name}/>
-            <Input isDisabled value={session.user.email}/>
+            <Input label="User Name" isDisabled value={session.user.name}/>
+            <Input label="Email" isDisabled value={session.user.email}/>
             <Input 
+                label="Phone Number"
                 placeholder='5********' 
                 type="number"
                 maxLength="9" 
