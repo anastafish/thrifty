@@ -7,7 +7,9 @@ export default async function deleteItem(id) {
             .from('items')
             .delete()
             .eq('id', id)
-            return data
+
+        await supabase.storage.from('items').remove([`images/${id}.jpg`])
+
     }
     catch (error) {
         console.log(error)
