@@ -19,7 +19,7 @@ export default function Items() {
 
     return (
         <div className="flex p-5 gap-5 flex-wrap items-center justify-center">
-            {items.map((item) => {
+            {items.slice().reverse().map((item) => {
                 return (
                     <Item key={item.id} item={item}/>
                 )
