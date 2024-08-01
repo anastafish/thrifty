@@ -156,7 +156,7 @@ export default function ItemForm({session}) {
           router.push('/shop')
         }}
       >
-        List Now
+        Sell Now
       </Button>
     </form>
       )

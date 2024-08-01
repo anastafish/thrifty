@@ -4,16 +4,17 @@ import Link from "next/link";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-
 const Hero = ({ session }) => {
 
-    const notify = () => toast.warn("Signup first to be able to list items");
+    const notify = () => toast.warn("Signup first to be able to Sell!");
 
     return (
-        <main className="container mx-auto px-4 py-8 flex flex-col gap-5">
+        <main className="container mx-auto py-8 flex flex-col gap-5">
             <ToastContainer />
-  <section id="hero" className="text-center py-12 bg-green-100 rounded-lg mb-8">
+  <section
+     id="hero" 
+     className="text-center py-12 bg-green-100 rounded-lg mb-8"
+     >
     <h2 className="text-4xl font-bold text-green-800 mb-4">The First Thrift online Store in Saudi Arabia!</h2>
     <p className="text-xl text-green-600 mb-6">Buy and sell pre-loved fashion with ease.</p>
     <div className="space-x-4 flex items-center justify-center gap-4">
@@ -22,15 +23,15 @@ const Hero = ({ session }) => {
           Start Thrifting
         </button>      
       </Link>
-      {session ? <Link href={'/list'}>
+      {session ? <Link href={'/sell'}>
         <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-          List Your Items
+          Start Selling
         </button>      
       </Link> : <button 
       className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
       onClick={notify}
       >
-        List Your Items
+        Start Selling
         </button>
         }
     </div>
@@ -44,7 +45,7 @@ const Hero = ({ session }) => {
         <p className="text-center">Sign up using your Google account.</p>
       </div>
       <div className="bg-white p-6 rounded-lg shadow">
-        <h3 className="text-xl font-semibold mb-2 text-center">List Your Clothes</h3>
+        <h3 className="text-xl font-semibold mb-2 text-center">Sell Your Clothes</h3>
         <p className="text-center">Upload photos, add details (brand, size, price), and publish your listing.</p>
       </div>
       <div className="bg-white p-6 rounded-lg shadow">

@@ -21,16 +21,21 @@ export default function SingleItem({id, session}) {
         getSingleItem(id).then((data) => {
             setItem(data[0])
         })
-        getUser(session.user.email).then(data => {
-            setCurrentUser(data)
-        })
+        if(session){
+          getUser(session.user.email).then(data => {
+              setCurrentUser(data)
+          })
+        }
+        else {
+            setCurrentUser(null)
+        }
         
     }, [])
     if (!item  || item.length === 0) return (
         <div className="flex items-center justify-center">
             <Spinner size="lg" />
-        </div>
-    )
+        </div>)
+        
     return (
         <div id={item.id} className="flex flex-col items-center gap-2 justify-center p-5">
             <Image alt="itme_img" src={`https://kujxhgudslinapnnligd.supabase.co/storage/v1/object/public/items/images/${item.id}.jpg`} width={200} height={200} />
@@ -41,7 +46,8 @@ export default function SingleItem({id, session}) {
             <p className="text-2xl">{item.price}</p>
             <p className="text-2xl">{item.description}</p>
             <div>
-                {currentUser && currentUser.phone !== item.seller_number ? <FloatingWhatsApp 
+                {!currentUser ? <h1>signIn to contact the seller</h1> :
+                 currentUser.phone !== item.seller_number ? <FloatingWhatsApp 
                     phoneNumber={item.seller_number} 
                     accountName="Seller" 
                     avatar={avatar.src} 

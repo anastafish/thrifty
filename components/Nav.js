@@ -22,7 +22,7 @@ export default async function Nav() {
           <Link href={'/shop'}>Shop</Link>
         </NavbarItem>
         {session && <NavbarItem>
-          <Link href={'/list'}>New List</Link>
+          <Link href={'/sell'}>Sell</Link>
         </NavbarItem>}
           {session ? 
         <NavbarItem className="flex gap-3">

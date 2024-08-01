@@ -3,7 +3,7 @@ import {auth} from '@/auth'
 import {redirect} from 'next/navigation'
 import getUser from '../lib/getUser'
 
-export default async function List() {
+export default async function Sell() {
 
     const session = await auth()
     const user = await getUser(session.user.email)
